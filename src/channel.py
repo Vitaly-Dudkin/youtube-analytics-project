@@ -52,10 +52,6 @@ class Channel:
     def views_count(self):
         return self.__views_count
 
-    @channel_id.setter
-    def channel_id(self, channel_id):
-        self.__channel_id = channel_id
-
     @title.setter
     def title(self, title):
         self.__title = title
