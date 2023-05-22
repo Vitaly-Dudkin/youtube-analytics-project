@@ -2,8 +2,10 @@ import json
 import os
 from googleapiclient.discovery import build
 from src.utils import find_value
+from functools import total_ordering
 
 
+@total_ordering
 class Channel:
     """Класс для ютуб-канала"""
 
@@ -138,3 +140,19 @@ class Channel:
 
         with open(path, "w", encoding="UTF-8") as json_file:
             json.dump(attributes, json_file, indent=4, separators=(',', ': '), ensure_ascii=False)
+
+    def __str__(self):
+        return f'{self.__title} ({self.__url})'
+
+    def __eq__(self, other):
+        return self.__subscribers_count == other.__subscribers_count
+
+    def __ge__(self, other):
+        return self.__subscribers_count > other.__subscribers_count
+
+    def __add__(self, other):
+        return int(self.__subscribers_count) + int(other.__subscribers_count)
+
+    def __sub__(self, other):
+        return int(self.__subscribers_count) - int(other.__subscribers_count)
+
