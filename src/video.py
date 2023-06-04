@@ -85,4 +85,3 @@ class PLVideo(Video):
         super().__init__(video_id)
         self.video_pl = video_pl
 
-

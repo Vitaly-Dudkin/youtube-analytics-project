@@ -155,4 +155,3 @@ class Channel:
 
     def __sub__(self, other):
         return int(self.__subscribers_count) - int(other.__subscribers_count)
-
