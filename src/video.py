@@ -4,13 +4,18 @@ from src.utils import find_value
 
 class Video(Channel):
     def __init__(self, video_id):
-        self.__video_id = video_id
-        self.__title = None
-        self.__url = None
-        self.__video_count = None
-        self.__likes_count = None
 
-        self.set_atr()
+        self.__video_id = video_id
+
+        try:
+            self.set_atr()
+
+        except IndexError:
+
+            self.__title = None
+            self.__url = None
+            self.__views_count = None
+            self.__like_count = None
 
     @property
     def video_id(self):
@@ -46,12 +51,12 @@ class Video(Channel):
         self.__views_count = views_count
 
     @property
-    def likes_count(self):
+    def like_count(self):
         return self.__likes_count
 
-    @likes_count.setter
-    def likes_count(self, likes_count):
-        self.__likes_count = likes_count
+    @like_count.setter
+    def like_count(self, likes_count):
+        self.__like_count = likes_count
 
     def get_info(self) -> dict:
         """Получает данные о канале по его id"""
